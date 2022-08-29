@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rocket.todolist.dao.AssignmentMapper">
+
+    <insert id="insertAssignment" parameterType="assignment">
+        insert into todolist.assignment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            title, expect_time, user_id, state
+            <if test="content != null">
+                content
+            </if>
+            <if test="tag != null">
+                tag
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            #{title}, #{expectTime}, #{userId}, #{state}
+            <if test="content != null">
+                #{content}
+            </if>
+            <if test="tag != null">
+                #{tag}
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectAssignmentsByUser" parameterType="user" resultType="assignment">
+        select * from todolist.assignment where user_id = #{id}
+    </select>
+</mapper>
