@@ -9,6 +9,17 @@ public class Assignment {
     private String tag;
     private String content;
     private int userId;
+    private String state;
+
+
+    public Assignment(int id, String title, Date expectTime, String tag, String content, String state) {
+        this.id = id;
+        this.title = title;
+        this.expectTime = expectTime;
+        this.tag = tag;
+        this.content = content;
+        this.state = state;
+    }
 
     @Override
     public String toString() {
@@ -30,8 +41,6 @@ public class Assignment {
         this.userId = userId;
         this.state = state;
     }
-
-    private String state;
 
     public Assignment(String title, Date expectTime, int userId, String state) {
         this.title = title;

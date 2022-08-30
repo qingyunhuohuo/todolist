@@ -9,4 +9,8 @@ public interface AssignmentMapper {
     void insertAssignment(Assignment assignment);
 
     List<Assignment> selectAssignmentsByUser(User user);
+
+    void deleteAssignmentById(int id);
+
+    void updateAssignmentById(Assignment assignment);
 }

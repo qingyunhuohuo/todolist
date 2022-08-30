@@ -29,4 +29,30 @@
     <select id="selectAssignmentsByUser" parameterType="user" resultType="assignment">
         select * from todolist.assignment where user_id = #{id}
     </select>
+
+    <delete id="deleteAssignmentById">
+        delete from todolist.assignment where id = #{id}
+    </delete>
+
+    <update id="updateAssignmentById" parameterType="Assignment">
+        update todolist.assignment
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="tag != null">
+                tag = #{tag},
+            </if>
+            <if test="expectTime != null">
+                expect_time = #{expectTime},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="state != null">
+                state = #{state}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

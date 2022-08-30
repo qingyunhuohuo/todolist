@@ -69,6 +69,34 @@ public class TodolistApplication {
 		return String.format("Hello %s!", res);
 	}
 
+	@GetMapping("/testdelete")
+	public String testDelete(@RequestParam(value = "id", defaultValue = "World") String id) {
+		deleteAssignment(Integer.parseInt(id));
+		return String.format("Hello !");
+	}
+
+	private void deleteAssignment(int id) {
+		SqlSession sqlSession = Utils.getSqlSession();
+		AssignmentMapper mapper = sqlSession.getMapper(AssignmentMapper.class);
+		mapper.deleteAssignmentById(id);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
+	@GetMapping("/testupdate")
+	public String testUpdate(@RequestParam(value = "id", defaultValue = "World") String id) {
+		updateAssignment(Integer.parseInt(id));
+		return String.format("Hello !");
+	}
+
+	private void updateAssignment(int id) {
+		SqlSession sqlSession = Utils.getSqlSession();
+		AssignmentMapper mapper = sqlSession.getMapper(AssignmentMapper.class);
+		mapper.updateAssignmentById(new Assignment(id, "测试标题", new Date(1661358228950L), "测试分类", "测试内容", "待完成"));
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
 	private List<Assignment> printAssignment(User user) {
 		SqlSession sqlSession = Utils.getSqlSession();
 		AssignmentMapper mapper = sqlSession.getMapper(AssignmentMapper.class);
