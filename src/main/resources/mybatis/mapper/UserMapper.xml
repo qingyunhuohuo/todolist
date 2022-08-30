@@ -10,4 +10,16 @@
     <insert id="insertUser" parameterType="user">
         insert into todolist.user(name, pwd, email) values(#{name}, #{pwd}, #{email})
     </insert>
+
+    <delete id="deleteUser" parameterType="user">
+        delete from todolist.user where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="user">
+        update todolist.user set name=#{name}, email=#{email} where id=#{id}
+    </update>
+
+    <select id="getUserById">
+        select * from todolist.user where id = #{id}
+    </select>
 </mapper>
