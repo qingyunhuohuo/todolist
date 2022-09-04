@@ -8,6 +8,7 @@ import com.rocket.todolist.util.Utils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,12 +25,14 @@ public class TodolistApplication {
 	}
 
 	@GetMapping("/hello1")
+	@CrossOrigin
 	public String hello1(@RequestParam(value = "name", defaultValue = "World") String name) {
-		write(new User(name, "123456"));
+		write(new User(name, "123456", "test@qq.com"));
 		return String.format("Hello %s!", name);
 	}
 
 	@GetMapping("/hello")
+	@CrossOrigin
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		print();
 		return String.format("Hello %s!", name);
@@ -54,12 +57,14 @@ public class TodolistApplication {
 	}
 
 	@GetMapping("/test1")
+	@CrossOrigin
 	public String test1(@RequestParam(value = "title", defaultValue = "World") String title, @RequestParam(value = "userId", defaultValue = "1") String userId) {
 		writeAssignment(new Assignment(title, new Date(1661358228950L), Integer.parseInt(userId), "待完成"));
 		return String.format("Hello %s!", userId);
 	}
 
 	@GetMapping("/test")
+	@CrossOrigin
 	public String test(@RequestParam(value = "userId", defaultValue = "World") String userId) {
 		List<Assignment> assignments = printAssignment(new User(Integer.parseInt(userId), "xxx", "123456", "xxx"));
 		StringBuilder res = new StringBuilder();
@@ -70,6 +75,7 @@ public class TodolistApplication {
 	}
 
 	@GetMapping("/testdelete")
+	@CrossOrigin
 	public String testDelete(@RequestParam(value = "id", defaultValue = "World") String id) {
 		deleteAssignment(Integer.parseInt(id));
 		return String.format("Hello !");
@@ -84,6 +90,7 @@ public class TodolistApplication {
 	}
 
 	@GetMapping("/testupdate")
+	@CrossOrigin
 	public String testUpdate(@RequestParam(value = "id", defaultValue = "World") String id) {
 		updateAssignment(Integer.parseInt(id));
 		return String.format("Hello !");

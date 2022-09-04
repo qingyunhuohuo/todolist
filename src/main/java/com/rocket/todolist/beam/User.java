@@ -6,6 +6,12 @@ public class User {
     private String pwd;
     private String email;
 
+    public User(String name, String pwd, String email) {
+        this.name = name;
+        this.pwd = pwd;
+        this.email = email;
+    }
+
     public User(String name, String pwd) {
         this.name = name;
         this.pwd = pwd;
