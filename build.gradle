@@ -17,6 +17,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'com.google.protobuf:protobuf-java:3.21.5'
+	implementation 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
