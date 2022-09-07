@@ -19,7 +19,7 @@
         update todolist.user set name=#{name}, email=#{email} where id=#{id}
     </update>
 
-    <select id="getUserById">
+    <select id="getUserById" resultType="user">
         select * from todolist.user where id = #{id}
     </select>
 </mapper>
