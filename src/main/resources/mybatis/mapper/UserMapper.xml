@@ -22,4 +22,8 @@
     <select id="getUserById" resultType="user">
         select * from todolist.user where id = #{id}
     </select>
+
+    <select id="getUserByEmail" resultType="user">
+        select * from todolist.user where email = #{email}
+    </select>
 </mapper>

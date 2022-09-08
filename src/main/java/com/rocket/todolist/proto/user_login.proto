@@ -1,9 +1,0 @@
-syntax = "proto3";
-package com.rocket.todolist.protobuf;
-message UserInfoRequest {
-    int64 userId = 1;
-}
-message UserInfoResponse {
-    int32 userType = 1;
-    string mobile = 2;
-}

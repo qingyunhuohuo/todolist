@@ -1,0 +1,11 @@
+syntax = "proto3";
+package protobuf;
+message LoginRequest {
+    string info = 1;
+    string password = 2;
+    int32 type = 3;
+}
+message LoginResponse {
+    string userName = 1;
+    bool isSucceed = 2;
+}
