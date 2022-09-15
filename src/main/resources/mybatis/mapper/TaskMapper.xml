@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.rocket.todolist.dao.AssignmentMapper">
+<mapper namespace="com.rocket.todolist.dao.TaskMapper">
 
-    <insert id="insertAssignment" parameterType="assignment">
-        insert into todolist.assignment
+    <insert id="insertTask" parameterType="task">
+        insert into todolist.task
         <trim prefix="(" suffix=")" suffixOverrides=",">
             title, expect_time, user_id, state
             <if test="content != null">
@@ -26,16 +26,16 @@
         </trim>
     </insert>
 
-    <select id="selectAssignmentsByUser" parameterType="user" resultType="assignment">
-        select * from todolist.assignment where user_id = #{id}
+    <select id="selectTasksByUser" parameterType="user" resultType="task">
+        select * from todolist.task where user_id = #{id}
     </select>
 
-    <delete id="deleteAssignmentById">
-        delete from todolist.assignment where id = #{id}
+    <delete id="deleteTaskById">
+        delete from todolist.task where id = #{id}
     </delete>
 
-    <update id="updateAssignmentById" parameterType="Assignment">
-        update todolist.assignment
+    <update id="updateTaskById" parameterType="task">
+        update todolist.task
         <set>
             <if test="title != null">
                 title = #{title},

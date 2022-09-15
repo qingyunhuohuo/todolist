@@ -1,20 +1,7 @@
 package com.rocket.todolist;
 
-import com.rocket.todolist.beam.Assignment;
-import com.rocket.todolist.beam.User;
-import com.rocket.todolist.dao.AssignmentMapper;
-import com.rocket.todolist.dao.UserMapper;
-import com.rocket.todolist.util.Utils;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.sql.Date;
-import java.util.List;
 
 @SpringBootApplication
 public class TodolistApplication {

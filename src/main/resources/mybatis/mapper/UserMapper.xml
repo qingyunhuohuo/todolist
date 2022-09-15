@@ -11,7 +11,7 @@
         insert into todolist.user(name, pwd, email) values(#{name}, #{pwd}, #{email})
     </insert>
 
-    <delete id="deleteUser" parameterType="user">
+    <delete id="deleteUserById">
         delete from todolist.user where id = #{id}
     </delete>
 

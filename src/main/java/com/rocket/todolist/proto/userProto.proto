@@ -6,6 +6,15 @@ message LoginRequest {
     int32 type = 3;
 }
 message LoginResponse {
-    string userName = 1;
-    bool isSucceed = 2;
+    int32 id = 1;
+    string userName = 2;
+    // 0-succeed, 2-fail
+    int32 code = 3;
+}
+message DeleteUserRequest {
+    int32 id = 1;
+}
+message DeleteUserResponse {
+    // 0-succeed, 2-fail
+    int32 code = 1;
 }

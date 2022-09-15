@@ -809,22 +809,32 @@ public final class UserProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string userName = 1;</code>
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    int getId();
+
+    /**
+     * <code>string userName = 2;</code>
      * @return The userName.
      */
     java.lang.String getUserName();
     /**
-     * <code>string userName = 1;</code>
+     * <code>string userName = 2;</code>
      * @return The bytes for userName.
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
-     * <code>bool isSucceed = 2;</code>
-     * @return The isSucceed.
+     * <pre>
+     * 0-succeed, 2-fail
+     * </pre>
+     *
+     * <code>int32 code = 3;</code>
+     * @return The code.
      */
-    boolean getIsSucceed();
+    int getCode();
   }
   /**
    * Protobuf type {@code protobuf.LoginResponse}
@@ -872,15 +882,20 @@ public final class UserProto {
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               userName_ = s;
               break;
             }
-            case 16: {
+            case 24: {
 
-              isSucceed_ = input.readBool();
+              code_ = input.readInt32();
               break;
             }
             default: {
@@ -917,10 +932,21 @@ public final class UserProto {
               protobuf.UserProto.LoginResponse.class, protobuf.UserProto.LoginResponse.Builder.class);
     }
 
-    public static final int USERNAME_FIELD_NUMBER = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+
+    public static final int USERNAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object userName_;
     /**
-     * <code>string userName = 1;</code>
+     * <code>string userName = 2;</code>
      * @return The userName.
      */
     @java.lang.Override
@@ -937,7 +963,7 @@ public final class UserProto {
       }
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string userName = 2;</code>
      * @return The bytes for userName.
      */
     @java.lang.Override
@@ -955,15 +981,19 @@ public final class UserProto {
       }
     }
 
-    public static final int ISSUCCEED_FIELD_NUMBER = 2;
-    private boolean isSucceed_;
+    public static final int CODE_FIELD_NUMBER = 3;
+    private int code_;
     /**
-     * <code>bool isSucceed = 2;</code>
-     * @return The isSucceed.
+     * <pre>
+     * 0-succeed, 2-fail
+     * </pre>
+     *
+     * <code>int32 code = 3;</code>
+     * @return The code.
      */
     @java.lang.Override
-    public boolean getIsSucceed() {
-      return isSucceed_;
+    public int getCode() {
+      return code_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -980,11 +1010,14 @@ public final class UserProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userName_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userName_);
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
       }
-      if (isSucceed_ != false) {
-        output.writeBool(2, isSucceed_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userName_);
+      }
+      if (code_ != 0) {
+        output.writeInt32(3, code_);
       }
       unknownFields.writeTo(output);
     }
@@ -995,12 +1028,16 @@ public final class UserProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userName_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userName_);
-      }
-      if (isSucceed_ != false) {
+      if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, isSucceed_);
+          .computeInt32Size(1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userName_);
+      }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, code_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1017,10 +1054,12 @@ public final class UserProto {
       }
       protobuf.UserProto.LoginResponse other = (protobuf.UserProto.LoginResponse) obj;
 
+      if (getId()
+          != other.getId()) return false;
       if (!getUserName()
           .equals(other.getUserName())) return false;
-      if (getIsSucceed()
-          != other.getIsSucceed()) return false;
+      if (getCode()
+          != other.getCode()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1032,11 +1071,12 @@ public final class UserProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUserName().hashCode();
-      hash = (37 * hash) + ISSUCCEED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsSucceed());
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1170,9 +1210,11 @@ public final class UserProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        id_ = 0;
+
         userName_ = "";
 
-        isSucceed_ = false;
+        code_ = 0;
 
         return this;
       }
@@ -1200,8 +1242,9 @@ public final class UserProto {
       @java.lang.Override
       public protobuf.UserProto.LoginResponse buildPartial() {
         protobuf.UserProto.LoginResponse result = new protobuf.UserProto.LoginResponse(this);
+        result.id_ = id_;
         result.userName_ = userName_;
-        result.isSucceed_ = isSucceed_;
+        result.code_ = code_;
         onBuilt();
         return result;
       }
@@ -1250,12 +1293,15 @@ public final class UserProto {
 
       public Builder mergeFrom(protobuf.UserProto.LoginResponse other) {
         if (other == protobuf.UserProto.LoginResponse.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
         if (!other.getUserName().isEmpty()) {
           userName_ = other.userName_;
           onChanged();
         }
-        if (other.getIsSucceed() != false) {
-          setIsSucceed(other.getIsSucceed());
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1286,9 +1332,40 @@ public final class UserProto {
         return this;
       }
 
+      private int id_ ;
+      /**
+       * <code>int32 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object userName_ = "";
       /**
-       * <code>string userName = 1;</code>
+       * <code>string userName = 2;</code>
        * @return The userName.
        */
       public java.lang.String getUserName() {
@@ -1304,7 +1381,7 @@ public final class UserProto {
         }
       }
       /**
-       * <code>string userName = 1;</code>
+       * <code>string userName = 2;</code>
        * @return The bytes for userName.
        */
       public com.google.protobuf.ByteString
@@ -1321,7 +1398,7 @@ public final class UserProto {
         }
       }
       /**
-       * <code>string userName = 1;</code>
+       * <code>string userName = 2;</code>
        * @param value The userName to set.
        * @return This builder for chaining.
        */
@@ -1336,7 +1413,7 @@ public final class UserProto {
         return this;
       }
       /**
-       * <code>string userName = 1;</code>
+       * <code>string userName = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearUserName() {
@@ -1346,7 +1423,7 @@ public final class UserProto {
         return this;
       }
       /**
-       * <code>string userName = 1;</code>
+       * <code>string userName = 2;</code>
        * @param value The bytes for userName to set.
        * @return This builder for chaining.
        */
@@ -1362,33 +1439,45 @@ public final class UserProto {
         return this;
       }
 
-      private boolean isSucceed_ ;
+      private int code_ ;
       /**
-       * <code>bool isSucceed = 2;</code>
-       * @return The isSucceed.
+       * <pre>
+       * 0-succeed, 2-fail
+       * </pre>
+       *
+       * <code>int32 code = 3;</code>
+       * @return The code.
        */
       @java.lang.Override
-      public boolean getIsSucceed() {
-        return isSucceed_;
+      public int getCode() {
+        return code_;
       }
       /**
-       * <code>bool isSucceed = 2;</code>
-       * @param value The isSucceed to set.
+       * <pre>
+       * 0-succeed, 2-fail
+       * </pre>
+       *
+       * <code>int32 code = 3;</code>
+       * @param value The code to set.
        * @return This builder for chaining.
        */
-      public Builder setIsSucceed(boolean value) {
+      public Builder setCode(int value) {
         
-        isSucceed_ = value;
+        code_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bool isSucceed = 2;</code>
+       * <pre>
+       * 0-succeed, 2-fail
+       * </pre>
+       *
+       * <code>int32 code = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearIsSucceed() {
+      public Builder clearCode() {
         
-        isSucceed_ = false;
+        code_ = 0;
         onChanged();
         return this;
       }
@@ -1445,6 +1534,1006 @@ public final class UserProto {
 
   }
 
+  public interface DeleteUserRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.DeleteUserRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    int getId();
+  }
+  /**
+   * Protobuf type {@code protobuf.DeleteUserRequest}
+   */
+  public static final class DeleteUserRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.DeleteUserRequest)
+      DeleteUserRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DeleteUserRequest.newBuilder() to construct.
+    private DeleteUserRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DeleteUserRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DeleteUserRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DeleteUserRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.UserProto.internal_static_protobuf_DeleteUserRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.UserProto.internal_static_protobuf_DeleteUserRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.UserProto.DeleteUserRequest.class, protobuf.UserProto.DeleteUserRequest.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.UserProto.DeleteUserRequest)) {
+        return super.equals(obj);
+      }
+      protobuf.UserProto.DeleteUserRequest other = (protobuf.UserProto.DeleteUserRequest) obj;
+
+      if (getId()
+          != other.getId()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.UserProto.DeleteUserRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.UserProto.DeleteUserRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.DeleteUserRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.DeleteUserRequest)
+        protobuf.UserProto.DeleteUserRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.UserProto.internal_static_protobuf_DeleteUserRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.UserProto.internal_static_protobuf_DeleteUserRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.UserProto.DeleteUserRequest.class, protobuf.UserProto.DeleteUserRequest.Builder.class);
+      }
+
+      // Construct using protobuf.UserProto.DeleteUserRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.UserProto.internal_static_protobuf_DeleteUserRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.UserProto.DeleteUserRequest getDefaultInstanceForType() {
+        return protobuf.UserProto.DeleteUserRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.UserProto.DeleteUserRequest build() {
+        protobuf.UserProto.DeleteUserRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.UserProto.DeleteUserRequest buildPartial() {
+        protobuf.UserProto.DeleteUserRequest result = new protobuf.UserProto.DeleteUserRequest(this);
+        result.id_ = id_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.UserProto.DeleteUserRequest) {
+          return mergeFrom((protobuf.UserProto.DeleteUserRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.UserProto.DeleteUserRequest other) {
+        if (other == protobuf.UserProto.DeleteUserRequest.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.UserProto.DeleteUserRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.UserProto.DeleteUserRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int id_ ;
+      /**
+       * <code>int32 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.DeleteUserRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.DeleteUserRequest)
+    private static final protobuf.UserProto.DeleteUserRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.UserProto.DeleteUserRequest();
+    }
+
+    public static protobuf.UserProto.DeleteUserRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DeleteUserRequest>
+        PARSER = new com.google.protobuf.AbstractParser<DeleteUserRequest>() {
+      @java.lang.Override
+      public DeleteUserRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DeleteUserRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DeleteUserRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DeleteUserRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.UserProto.DeleteUserRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DeleteUserResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protobuf.DeleteUserResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 0-succeed, 2-fail
+     * </pre>
+     *
+     * <code>int32 code = 1;</code>
+     * @return The code.
+     */
+    int getCode();
+  }
+  /**
+   * Protobuf type {@code protobuf.DeleteUserResponse}
+   */
+  public static final class DeleteUserResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protobuf.DeleteUserResponse)
+      DeleteUserResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DeleteUserResponse.newBuilder() to construct.
+    private DeleteUserResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DeleteUserResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DeleteUserResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DeleteUserResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              code_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return protobuf.UserProto.internal_static_protobuf_DeleteUserResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return protobuf.UserProto.internal_static_protobuf_DeleteUserResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              protobuf.UserProto.DeleteUserResponse.class, protobuf.UserProto.DeleteUserResponse.Builder.class);
+    }
+
+    public static final int CODE_FIELD_NUMBER = 1;
+    private int code_;
+    /**
+     * <pre>
+     * 0-succeed, 2-fail
+     * </pre>
+     *
+     * <code>int32 code = 1;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public int getCode() {
+      return code_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (code_ != 0) {
+        output.writeInt32(1, code_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, code_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof protobuf.UserProto.DeleteUserResponse)) {
+        return super.equals(obj);
+      }
+      protobuf.UserProto.DeleteUserResponse other = (protobuf.UserProto.DeleteUserResponse) obj;
+
+      if (getCode()
+          != other.getCode()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static protobuf.UserProto.DeleteUserResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(protobuf.UserProto.DeleteUserResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protobuf.DeleteUserResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protobuf.DeleteUserResponse)
+        protobuf.UserProto.DeleteUserResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return protobuf.UserProto.internal_static_protobuf_DeleteUserResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return protobuf.UserProto.internal_static_protobuf_DeleteUserResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                protobuf.UserProto.DeleteUserResponse.class, protobuf.UserProto.DeleteUserResponse.Builder.class);
+      }
+
+      // Construct using protobuf.UserProto.DeleteUserResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        code_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return protobuf.UserProto.internal_static_protobuf_DeleteUserResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public protobuf.UserProto.DeleteUserResponse getDefaultInstanceForType() {
+        return protobuf.UserProto.DeleteUserResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public protobuf.UserProto.DeleteUserResponse build() {
+        protobuf.UserProto.DeleteUserResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public protobuf.UserProto.DeleteUserResponse buildPartial() {
+        protobuf.UserProto.DeleteUserResponse result = new protobuf.UserProto.DeleteUserResponse(this);
+        result.code_ = code_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof protobuf.UserProto.DeleteUserResponse) {
+          return mergeFrom((protobuf.UserProto.DeleteUserResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(protobuf.UserProto.DeleteUserResponse other) {
+        if (other == protobuf.UserProto.DeleteUserResponse.getDefaultInstance()) return this;
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        protobuf.UserProto.DeleteUserResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (protobuf.UserProto.DeleteUserResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int code_ ;
+      /**
+       * <pre>
+       * 0-succeed, 2-fail
+       * </pre>
+       *
+       * <code>int32 code = 1;</code>
+       * @return The code.
+       */
+      @java.lang.Override
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <pre>
+       * 0-succeed, 2-fail
+       * </pre>
+       *
+       * <code>int32 code = 1;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 0-succeed, 2-fail
+       * </pre>
+       *
+       * <code>int32 code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protobuf.DeleteUserResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:protobuf.DeleteUserResponse)
+    private static final protobuf.UserProto.DeleteUserResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new protobuf.UserProto.DeleteUserResponse();
+    }
+
+    public static protobuf.UserProto.DeleteUserResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DeleteUserResponse>
+        PARSER = new com.google.protobuf.AbstractParser<DeleteUserResponse>() {
+      @java.lang.Override
+      public DeleteUserResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DeleteUserResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DeleteUserResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DeleteUserResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public protobuf.UserProto.DeleteUserResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protobuf_LoginRequest_descriptor;
   private static final 
@@ -1455,6 +2544,16 @@ public final class UserProto {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protobuf_LoginResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_DeleteUserRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_DeleteUserRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protobuf_DeleteUserResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protobuf_DeleteUserResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1466,8 +2565,10 @@ public final class UserProto {
     java.lang.String[] descriptorData = {
       "\n\025proto/userProto.proto\022\010protobuf\"<\n\014Log" +
       "inRequest\022\014\n\004info\030\001 \001(\t\022\020\n\010password\030\002 \001(" +
-      "\t\022\014\n\004type\030\003 \001(\005\"4\n\rLoginResponse\022\020\n\010user" +
-      "Name\030\001 \001(\t\022\021\n\tisSucceed\030\002 \001(\010b\006proto3"
+      "\t\022\014\n\004type\030\003 \001(\005\";\n\rLoginResponse\022\n\n\002id\030\001" +
+      " \001(\005\022\020\n\010userName\030\002 \001(\t\022\014\n\004code\030\003 \001(\005\"\037\n\021" +
+      "DeleteUserRequest\022\n\n\002id\030\001 \001(\005\"\"\n\022DeleteU" +
+      "serResponse\022\014\n\004code\030\001 \001(\005b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1484,7 +2585,19 @@ public final class UserProto {
     internal_static_protobuf_LoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_LoginResponse_descriptor,
-        new java.lang.String[] { "UserName", "IsSucceed", });
+        new java.lang.String[] { "Id", "UserName", "Code", });
+    internal_static_protobuf_DeleteUserRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_protobuf_DeleteUserRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_DeleteUserRequest_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_protobuf_DeleteUserResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_protobuf_DeleteUserResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protobuf_DeleteUserResponse_descriptor,
+        new java.lang.String[] { "Code", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -12,7 +12,7 @@ public interface UserMapper {
 
     void updateUser(User user);
 
-    void deleteUser(User user);
+    void deleteUserById(int id);
 
     User getUserById(int id);
 

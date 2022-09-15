@@ -21,9 +21,30 @@ public class UserController {
         }
 		sqlSession.close();
         LoginResponse.Builder builder = LoginResponse.newBuilder();
-        boolean isSucceed = user != null && user.getPwd().equals(request.getPassword());
-        builder.setIsSucceed(isSucceed);
-        builder.setUserName(isSucceed ? user.getName() : "");
+        if (user != null && user.getPwd().equals(request.getPassword())) {
+            builder.setCode(0);
+            builder.setId(user.getId());
+            builder.setUserName(user.getName());
+        } else {
+            builder.setCode(2);
+        }
+        return builder.build();
+    }
+
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST, produces = "application/x-protobuf")
+    @CrossOrigin
+    public @ResponseBody DeleteUserResponse userDelete(@RequestBody DeleteUserRequest request) {
+        int id = request.getId();
+        SqlSession sqlSession = Utils.getSqlSession();
+        int res = sqlSession.delete("deleteUserById", id);
+        sqlSession.commit();
+        sqlSession.close();
+        DeleteUserResponse.Builder builder = DeleteUserResponse.newBuilder();
+        if (res == 1) {
+            builder.setCode(0);
+        } else {
+            builder.setCode(2);
+        }
         return builder.build();
     }
 }

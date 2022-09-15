@@ -24,6 +24,6 @@
 
     <mappers>
         <mapper resource="mybatis/mapper/UserMapper.xml" />
-        <mapper resource="mybatis/mapper/AssignmentMapper.xml" />
+        <mapper resource="mybatis/mapper/TaskMapper.xml" />
     </mappers>
 </configuration>
