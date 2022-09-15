@@ -43,6 +43,10 @@ public final class UserProto {
         getPasswordBytes();
 
     /**
+     * <pre>
+     * login: 1-email, 2-phone
+     * </pre>
+     *
      * <code>int32 type = 3;</code>
      * @return The type.
      */
@@ -225,6 +229,10 @@ public final class UserProto {
     public static final int TYPE_FIELD_NUMBER = 3;
     private int type_;
     /**
+     * <pre>
+     * login: 1-email, 2-phone
+     * </pre>
+     *
      * <code>int32 type = 3;</code>
      * @return The type.
      */
@@ -723,6 +731,10 @@ public final class UserProto {
 
       private int type_ ;
       /**
+       * <pre>
+       * login: 1-email, 2-phone
+       * </pre>
+       *
        * <code>int32 type = 3;</code>
        * @return The type.
        */
@@ -731,6 +743,10 @@ public final class UserProto {
         return type_;
       }
       /**
+       * <pre>
+       * login: 1-email, 2-phone
+       * </pre>
+       *
        * <code>int32 type = 3;</code>
        * @param value The type to set.
        * @return This builder for chaining.
@@ -742,6 +758,10 @@ public final class UserProto {
         return this;
       }
       /**
+       * <pre>
+       * login: 1-email, 2-phone
+       * </pre>
+       *
        * <code>int32 type = 3;</code>
        * @return This builder for chaining.
        */
@@ -828,13 +848,28 @@ public final class UserProto {
 
     /**
      * <pre>
-     * 0-succeed, 2-fail
+     **
+     * user error:
+     * 1001-user not find
+     * 1002-psw error
      * </pre>
      *
      * <code>int32 code = 3;</code>
      * @return The code.
      */
     int getCode();
+
+    /**
+     * <code>string message = 4;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 4;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
   }
   /**
    * Protobuf type {@code protobuf.LoginResponse}
@@ -850,6 +885,7 @@ public final class UserProto {
     }
     private LoginResponse() {
       userName_ = "";
+      message_ = "";
     }
 
     @java.lang.Override
@@ -896,6 +932,12 @@ public final class UserProto {
             case 24: {
 
               code_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
               break;
             }
             default: {
@@ -985,7 +1027,10 @@ public final class UserProto {
     private int code_;
     /**
      * <pre>
-     * 0-succeed, 2-fail
+     **
+     * user error:
+     * 1001-user not find
+     * 1002-psw error
      * </pre>
      *
      * <code>int32 code = 3;</code>
@@ -994,6 +1039,44 @@ public final class UserProto {
     @java.lang.Override
     public int getCode() {
       return code_;
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>string message = 4;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 4;</code>
+     * @return The bytes for message.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1019,6 +1102,9 @@ public final class UserProto {
       if (code_ != 0) {
         output.writeInt32(3, code_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, message_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1038,6 +1124,9 @@ public final class UserProto {
       if (code_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, code_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1060,6 +1149,8 @@ public final class UserProto {
           .equals(other.getUserName())) return false;
       if (getCode()
           != other.getCode()) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1077,6 +1168,8 @@ public final class UserProto {
       hash = (53 * hash) + getUserName().hashCode();
       hash = (37 * hash) + CODE_FIELD_NUMBER;
       hash = (53 * hash) + getCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1216,6 +1309,8 @@ public final class UserProto {
 
         code_ = 0;
 
+        message_ = "";
+
         return this;
       }
 
@@ -1245,6 +1340,7 @@ public final class UserProto {
         result.id_ = id_;
         result.userName_ = userName_;
         result.code_ = code_;
+        result.message_ = message_;
         onBuilt();
         return result;
       }
@@ -1302,6 +1398,10 @@ public final class UserProto {
         }
         if (other.getCode() != 0) {
           setCode(other.getCode());
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1442,7 +1542,10 @@ public final class UserProto {
       private int code_ ;
       /**
        * <pre>
-       * 0-succeed, 2-fail
+       **
+       * user error:
+       * 1001-user not find
+       * 1002-psw error
        * </pre>
        *
        * <code>int32 code = 3;</code>
@@ -1454,7 +1557,10 @@ public final class UserProto {
       }
       /**
        * <pre>
-       * 0-succeed, 2-fail
+       **
+       * user error:
+       * 1001-user not find
+       * 1002-psw error
        * </pre>
        *
        * <code>int32 code = 3;</code>
@@ -1469,7 +1575,10 @@ public final class UserProto {
       }
       /**
        * <pre>
-       * 0-succeed, 2-fail
+       **
+       * user error:
+       * 1001-user not find
+       * 1002-psw error
        * </pre>
        *
        * <code>int32 code = 3;</code>
@@ -1478,6 +1587,82 @@ public final class UserProto {
       public Builder clearCode() {
         
         code_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 4;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 4;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 4;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 4;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
         onChanged();
         return this;
       }
@@ -2030,7 +2215,7 @@ public final class UserProto {
 
     /**
      * <pre>
-     * 0-succeed, 2-fail
+     * 2000-succeed, 2-fail
      * </pre>
      *
      * <code>int32 code = 1;</code>
@@ -2126,7 +2311,7 @@ public final class UserProto {
     private int code_;
     /**
      * <pre>
-     * 0-succeed, 2-fail
+     * 2000-succeed, 2-fail
      * </pre>
      *
      * <code>int32 code = 1;</code>
@@ -2442,7 +2627,7 @@ public final class UserProto {
       private int code_ ;
       /**
        * <pre>
-       * 0-succeed, 2-fail
+       * 2000-succeed, 2-fail
        * </pre>
        *
        * <code>int32 code = 1;</code>
@@ -2454,7 +2639,7 @@ public final class UserProto {
       }
       /**
        * <pre>
-       * 0-succeed, 2-fail
+       * 2000-succeed, 2-fail
        * </pre>
        *
        * <code>int32 code = 1;</code>
@@ -2469,7 +2654,7 @@ public final class UserProto {
       }
       /**
        * <pre>
-       * 0-succeed, 2-fail
+       * 2000-succeed, 2-fail
        * </pre>
        *
        * <code>int32 code = 1;</code>
@@ -2565,10 +2750,11 @@ public final class UserProto {
     java.lang.String[] descriptorData = {
       "\n\025proto/userProto.proto\022\010protobuf\"<\n\014Log" +
       "inRequest\022\014\n\004info\030\001 \001(\t\022\020\n\010password\030\002 \001(" +
-      "\t\022\014\n\004type\030\003 \001(\005\";\n\rLoginResponse\022\n\n\002id\030\001" +
-      " \001(\005\022\020\n\010userName\030\002 \001(\t\022\014\n\004code\030\003 \001(\005\"\037\n\021" +
-      "DeleteUserRequest\022\n\n\002id\030\001 \001(\005\"\"\n\022DeleteU" +
-      "serResponse\022\014\n\004code\030\001 \001(\005b\006proto3"
+      "\t\022\014\n\004type\030\003 \001(\005\"L\n\rLoginResponse\022\n\n\002id\030\001" +
+      " \001(\005\022\020\n\010userName\030\002 \001(\t\022\014\n\004code\030\003 \001(\005\022\017\n\007" +
+      "message\030\004 \001(\t\"\037\n\021DeleteUserRequest\022\n\n\002id" +
+      "\030\001 \001(\005\"\"\n\022DeleteUserResponse\022\014\n\004code\030\001 \001" +
+      "(\005b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2585,7 +2771,7 @@ public final class UserProto {
     internal_static_protobuf_LoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protobuf_LoginResponse_descriptor,
-        new java.lang.String[] { "Id", "UserName", "Code", });
+        new java.lang.String[] { "Id", "UserName", "Code", "Message", });
     internal_static_protobuf_DeleteUserRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_protobuf_DeleteUserRequest_fieldAccessorTable = new

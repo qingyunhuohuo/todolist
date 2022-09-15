@@ -21,12 +21,15 @@ public class UserController {
         }
 		sqlSession.close();
         LoginResponse.Builder builder = LoginResponse.newBuilder();
-        if (user != null && user.getPwd().equals(request.getPassword())) {
-            builder.setCode(0);
+        if (user == null) {
+            builder.setCode(1001);
+            builder.setMessage("user not find");
+        } else if (!user.getPwd().equals(request.getPassword())) {
+            builder.setCode(1002);
+            builder.setMessage("password error");
+        } else {
             builder.setId(user.getId());
             builder.setUserName(user.getName());
-        } else {
-            builder.setCode(2);
         }
         return builder.build();
     }

@@ -4,26 +4,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rocket.todolist.dao.TaskMapper">
 
+<!--    <insert id="insertTask" parameterType="task">-->
+<!--        insert into todolist.task-->
+<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--            title, expect_time, user_id, state-->
+<!--            <if test="content != null">-->
+<!--                content-->
+<!--            </if>-->
+<!--            <if test="tag != null">-->
+<!--                tag-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--        <trim prefix="values(" suffix=")" suffixOverrides=",">-->
+<!--            #{title}, #{expectTime}, #{userId}, #{state}-->
+<!--            <if test="content != null">-->
+<!--                #{content}-->
+<!--            </if>-->
+<!--            <if test="tag != null">-->
+<!--                #{tag}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    </insert>-->
     <insert id="insertTask" parameterType="task">
-        insert into todolist.task
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            title, expect_time, user_id, state
-            <if test="content != null">
-                content
-            </if>
-            <if test="tag != null">
-                tag
-            </if>
-        </trim>
-        <trim prefix="values(" suffix=")" suffixOverrides=",">
-            #{title}, #{expectTime}, #{userId}, #{state}
-            <if test="content != null">
-                #{content}
-            </if>
-            <if test="tag != null">
-                #{tag}
-            </if>
-        </trim>
+        insert into task (user_id, title, start_time, end_time, color, category,
+                    content, state, repeat, remind_method, remind_time, address)
+        values (#{userId}, #{title}, #{startTime}, #{endTime}, #{color}, #{category},
+                    #{content}, #{state}, #{repeat}, #{remindMethod}, #{remindTime}, #{address})
     </insert>
 
     <select id="selectTasksByUser" parameterType="user" resultType="task">
@@ -40,17 +46,35 @@
             <if test="title != null">
                 title = #{title},
             </if>
-            <if test="tag != null">
-                tag = #{tag},
+            <if test="startTime != null">
+                start_time = #{startTime},
             </if>
-            <if test="expectTime != null">
-                expect_time = #{expectTime},
+            <if test="endTime != null">
+                end_time = #{endTime},
+            </if>
+            <if test="color != null">
+                color = #{color},
+            </if>
+            <if test="category != null">
+                category = #{category},
             </if>
             <if test="content != null">
                 content = #{content},
             </if>
             <if test="state != null">
                 state = #{state}
+            </if>
+            <if test="repeat != null">
+                repeat = #{repeat}
+            </if>
+            <if test="remindMethod != null">
+                remind_method = #{remindMethod}
+            </if>
+            <if test="remindTime != null">
+                remind_time = #{remindTime}
+            </if>
+            <if test="address != null">
+                address = #{address}
             </if>
         </set>
         where id = #{id}
