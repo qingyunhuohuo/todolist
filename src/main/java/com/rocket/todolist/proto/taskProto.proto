@@ -1,0 +1,64 @@
+syntax = "proto3";
+package protobuf;
+
+message Task {
+    int32 id = 1;
+    int32 userId = 2;
+    string title = 3;
+    int64 startTime = 4;
+    int64 endTime = 5;
+    string color = 6;
+    string category = 7;
+    string content = 8;
+    int32 state = 9;
+    int32 repeat = 10;
+    int32 remindMethod = 11;
+    int64 remindTime = 12;
+    string address = 13;
+}
+
+enum ResponseCode {
+    Success = 0;
+    Error = 2001;
+}
+
+message Response {
+    ResponseCode code = 1;
+    string message = 2;
+}
+
+message AddTaskRequest {
+    Task task = 1;
+}
+
+message AddTaskResponse {
+    Response response = 1;
+}
+
+message DeleteTaskRequest {
+    int32 id = 1;
+}
+
+message DeleteTaskResponse {
+    Response response = 1;
+}
+
+message UpdateTaskRequest {
+    Task task = 1;
+}
+
+message UpdateTaskResponse {
+    Response response = 1;
+}
+
+message GetTaskRequest {
+    int64 startTime = 1;
+    int64 endTime = 2;
+    string category = 7;
+    int32 state = 9;
+}
+
+message GetTaskResponse {
+    Response response = 1;
+    repeated Task tasks = 2;
+}
