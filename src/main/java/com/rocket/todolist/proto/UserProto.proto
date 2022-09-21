@@ -1,0 +1,49 @@
+syntax = "proto3";
+import "Common.proto";
+package com.rocket.todolist.protobuf;
+
+message User {
+    int32 id = 1;
+    string name = 2;
+    string pwd = 3;
+    string email = 4;
+}
+
+enum LoginType {
+    None = 0;
+    Email = 1;
+}
+
+message AddUserRequest {
+    User user = 1;
+}
+
+message AddUserResponse {
+    Response response = 1;
+}
+
+message DeleteUserRequest {
+    int32 id = 1;
+}
+
+message DeleteUserResponse {
+    Response response = 1;
+}
+
+message UpdateUserRequest {
+    User user = 1;
+}
+
+message UpdateUserResponse {
+    Response response = 1;
+}
+
+message UserLoginRequest {
+    User user = 1;
+    LoginType type = 2;
+}
+
+message UserLoginResponse {
+    Response response = 1;
+    User user = 2;
+}

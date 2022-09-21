@@ -3,9 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rocket.todolist.dao.UserMapper">
-    <select id="getUserList" resultType="user">
-        select * from todolist.user
-    </select>
 
     <insert id="insertUser" parameterType="user">
         insert into todolist.user(name, pwd, email) values(#{name}, #{pwd}, #{email})
@@ -19,11 +16,7 @@
         update todolist.user set name=#{name}, email=#{email} where id=#{id}
     </update>
 
-    <select id="getUserById" resultType="user">
-        select * from todolist.user where id = #{id}
-    </select>
-
-    <select id="getUserByEmail" resultType="user">
-        select * from todolist.user where email = #{email}
+    <select id="userLoginByEmail" resultType="user" parameterType="user">
+        select * from todolist.user where email = #{email} and pwd = #{pwd}
     </select>
 </mapper>

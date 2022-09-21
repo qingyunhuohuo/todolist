@@ -14,132 +14,6 @@ public final class TaskProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  /**
-   * Protobuf enum {@code com.rocket.todolist.protobuf.ResponseCode}
-   */
-  public enum ResponseCode
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>Success = 0;</code>
-     */
-    Success(0),
-    /**
-     * <code>DeleteTaskError = 2100;</code>
-     */
-    DeleteTaskError(2100),
-    /**
-     * <code>UpdateTaskError = 2200;</code>
-     */
-    UpdateTaskError(2200),
-    /**
-     * <code>AddTaskError = 2300;</code>
-     */
-    AddTaskError(2300),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>Success = 0;</code>
-     */
-    public static final int Success_VALUE = 0;
-    /**
-     * <code>DeleteTaskError = 2100;</code>
-     */
-    public static final int DeleteTaskError_VALUE = 2100;
-    /**
-     * <code>UpdateTaskError = 2200;</code>
-     */
-    public static final int UpdateTaskError_VALUE = 2200;
-    /**
-     * <code>AddTaskError = 2300;</code>
-     */
-    public static final int AddTaskError_VALUE = 2300;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static ResponseCode valueOf(int value) {
-      return forNumber(value);
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
-    public static ResponseCode forNumber(int value) {
-      switch (value) {
-        case 0: return Success;
-        case 2100: return DeleteTaskError;
-        case 2200: return UpdateTaskError;
-        case 2300: return AddTaskError;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<ResponseCode>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        ResponseCode> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ResponseCode>() {
-            public ResponseCode findValueByNumber(int number) {
-              return ResponseCode.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalStateException(
-            "Can't get the descriptor of an unrecognized enum value.");
-      }
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.rocket.todolist.protobuf.TaskProto.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final ResponseCode[] VALUES = values();
-
-    public static ResponseCode valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private ResponseCode(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:com.rocket.todolist.protobuf.ResponseCode)
-  }
-
   public interface TaskOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.rocket.todolist.protobuf.Task)
       com.google.protobuf.MessageOrBuilder {
@@ -1873,683 +1747,6 @@ public final class TaskProto {
 
   }
 
-  public interface ResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.rocket.todolist.protobuf.Response)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-     * @return The enum numeric value on the wire for code.
-     */
-    int getCodeValue();
-    /**
-     * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-     * @return The code.
-     */
-    com.rocket.todolist.protobuf.TaskProto.ResponseCode getCode();
-
-    /**
-     * <code>string message = 2;</code>
-     * @return The message.
-     */
-    java.lang.String getMessage();
-    /**
-     * <code>string message = 2;</code>
-     * @return The bytes for message.
-     */
-    com.google.protobuf.ByteString
-        getMessageBytes();
-  }
-  /**
-   * Protobuf type {@code com.rocket.todolist.protobuf.Response}
-   */
-  public static final class Response extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.rocket.todolist.protobuf.Response)
-      ResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Response.newBuilder() to construct.
-    private Response(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Response() {
-      code_ = 0;
-      message_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Response();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Response(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              code_ = rawValue;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              message_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.rocket.todolist.protobuf.TaskProto.internal_static_com_rocket_todolist_protobuf_Response_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.rocket.todolist.protobuf.TaskProto.internal_static_com_rocket_todolist_protobuf_Response_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.rocket.todolist.protobuf.TaskProto.Response.class, com.rocket.todolist.protobuf.TaskProto.Response.Builder.class);
-    }
-
-    public static final int CODE_FIELD_NUMBER = 1;
-    private int code_;
-    /**
-     * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-     * @return The enum numeric value on the wire for code.
-     */
-    @java.lang.Override public int getCodeValue() {
-      return code_;
-    }
-    /**
-     * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-     * @return The code.
-     */
-    @java.lang.Override public com.rocket.todolist.protobuf.TaskProto.ResponseCode getCode() {
-      @SuppressWarnings("deprecation")
-      com.rocket.todolist.protobuf.TaskProto.ResponseCode result = com.rocket.todolist.protobuf.TaskProto.ResponseCode.valueOf(code_);
-      return result == null ? com.rocket.todolist.protobuf.TaskProto.ResponseCode.UNRECOGNIZED : result;
-    }
-
-    public static final int MESSAGE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object message_;
-    /**
-     * <code>string message = 2;</code>
-     * @return The message.
-     */
-    @java.lang.Override
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        message_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string message = 2;</code>
-     * @return The bytes for message.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (code_ != com.rocket.todolist.protobuf.TaskProto.ResponseCode.Success.getNumber()) {
-        output.writeEnum(1, code_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (code_ != com.rocket.todolist.protobuf.TaskProto.ResponseCode.Success.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, code_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.rocket.todolist.protobuf.TaskProto.Response)) {
-        return super.equals(obj);
-      }
-      com.rocket.todolist.protobuf.TaskProto.Response other = (com.rocket.todolist.protobuf.TaskProto.Response) obj;
-
-      if (code_ != other.code_) return false;
-      if (!getMessage()
-          .equals(other.getMessage())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CODE_FIELD_NUMBER;
-      hash = (53 * hash) + code_;
-      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMessage().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.rocket.todolist.protobuf.TaskProto.Response parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.rocket.todolist.protobuf.TaskProto.Response prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.rocket.todolist.protobuf.Response}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.rocket.todolist.protobuf.Response)
-        com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.rocket.todolist.protobuf.TaskProto.internal_static_com_rocket_todolist_protobuf_Response_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.rocket.todolist.protobuf.TaskProto.internal_static_com_rocket_todolist_protobuf_Response_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.rocket.todolist.protobuf.TaskProto.Response.class, com.rocket.todolist.protobuf.TaskProto.Response.Builder.class);
-      }
-
-      // Construct using com.rocket.todolist.protobuf.TaskProto.Response.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        code_ = 0;
-
-        message_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.rocket.todolist.protobuf.TaskProto.internal_static_com_rocket_todolist_protobuf_Response_descriptor;
-      }
-
-      @java.lang.Override
-      public com.rocket.todolist.protobuf.TaskProto.Response getDefaultInstanceForType() {
-        return com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.rocket.todolist.protobuf.TaskProto.Response build() {
-        com.rocket.todolist.protobuf.TaskProto.Response result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.rocket.todolist.protobuf.TaskProto.Response buildPartial() {
-        com.rocket.todolist.protobuf.TaskProto.Response result = new com.rocket.todolist.protobuf.TaskProto.Response(this);
-        result.code_ = code_;
-        result.message_ = message_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.rocket.todolist.protobuf.TaskProto.Response) {
-          return mergeFrom((com.rocket.todolist.protobuf.TaskProto.Response)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.rocket.todolist.protobuf.TaskProto.Response other) {
-        if (other == com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance()) return this;
-        if (other.code_ != 0) {
-          setCodeValue(other.getCodeValue());
-        }
-        if (!other.getMessage().isEmpty()) {
-          message_ = other.message_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.rocket.todolist.protobuf.TaskProto.Response parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.rocket.todolist.protobuf.TaskProto.Response) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int code_ = 0;
-      /**
-       * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-       * @return The enum numeric value on the wire for code.
-       */
-      @java.lang.Override public int getCodeValue() {
-        return code_;
-      }
-      /**
-       * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-       * @param value The enum numeric value on the wire for code to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCodeValue(int value) {
-        
-        code_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-       * @return The code.
-       */
-      @java.lang.Override
-      public com.rocket.todolist.protobuf.TaskProto.ResponseCode getCode() {
-        @SuppressWarnings("deprecation")
-        com.rocket.todolist.protobuf.TaskProto.ResponseCode result = com.rocket.todolist.protobuf.TaskProto.ResponseCode.valueOf(code_);
-        return result == null ? com.rocket.todolist.protobuf.TaskProto.ResponseCode.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-       * @param value The code to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCode(com.rocket.todolist.protobuf.TaskProto.ResponseCode value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        code_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.rocket.todolist.protobuf.ResponseCode code = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCode() {
-        
-        code_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object message_ = "";
-      /**
-       * <code>string message = 2;</code>
-       * @return The message.
-       */
-      public java.lang.String getMessage() {
-        java.lang.Object ref = message_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          message_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string message = 2;</code>
-       * @return The bytes for message.
-       */
-      public com.google.protobuf.ByteString
-          getMessageBytes() {
-        java.lang.Object ref = message_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          message_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string message = 2;</code>
-       * @param value The message to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessage(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        message_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string message = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMessage() {
-        
-        message_ = getDefaultInstance().getMessage();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string message = 2;</code>
-       * @param value The bytes for message to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        message_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.rocket.todolist.protobuf.Response)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.rocket.todolist.protobuf.Response)
-    private static final com.rocket.todolist.protobuf.TaskProto.Response DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.rocket.todolist.protobuf.TaskProto.Response();
-    }
-
-    public static com.rocket.todolist.protobuf.TaskProto.Response getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Response>
-        PARSER = new com.google.protobuf.AbstractParser<Response>() {
-      @java.lang.Override
-      public Response parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Response(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Response> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Response> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.Response getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface AddTaskRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.rocket.todolist.protobuf.AddTaskRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -3186,11 +2383,11 @@ public final class TaskProto {
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return The response.
      */
-    com.rocket.todolist.protobuf.TaskProto.Response getResponse();
+    com.rocket.todolist.protobuf.Common.Response getResponse();
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
-    com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder();
+    com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder();
   }
   /**
    * Protobuf type {@code com.rocket.todolist.protobuf.AddTaskResponse}
@@ -3238,11 +2435,11 @@ public final class TaskProto {
               done = true;
               break;
             case 10: {
-              com.rocket.todolist.protobuf.TaskProto.Response.Builder subBuilder = null;
+              com.rocket.todolist.protobuf.Common.Response.Builder subBuilder = null;
               if (response_ != null) {
                 subBuilder = response_.toBuilder();
               }
-              response_ = input.readMessage(com.rocket.todolist.protobuf.TaskProto.Response.parser(), extensionRegistry);
+              response_ = input.readMessage(com.rocket.todolist.protobuf.Common.Response.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(response_);
                 response_ = subBuilder.buildPartial();
@@ -3285,7 +2482,7 @@ public final class TaskProto {
     }
 
     public static final int RESPONSE_FIELD_NUMBER = 1;
-    private com.rocket.todolist.protobuf.TaskProto.Response response_;
+    private com.rocket.todolist.protobuf.Common.Response response_;
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return Whether the response field is set.
@@ -3299,14 +2496,14 @@ public final class TaskProto {
      * @return The response.
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
-      return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+    public com.rocket.todolist.protobuf.Common.Response getResponse() {
+      return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+    public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
     }
 
@@ -3625,9 +2822,9 @@ public final class TaskProto {
         return this;
       }
 
-      private com.rocket.todolist.protobuf.TaskProto.Response response_;
+      private com.rocket.todolist.protobuf.Common.Response response_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> responseBuilder_;
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return Whether the response field is set.
@@ -3639,9 +2836,9 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return The response.
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
+      public com.rocket.todolist.protobuf.Common.Response getResponse() {
         if (responseBuilder_ == null) {
-          return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+          return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         } else {
           return responseBuilder_.getMessage();
         }
@@ -3649,7 +2846,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder setResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder setResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3666,7 +2863,7 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       public Builder setResponse(
-          com.rocket.todolist.protobuf.TaskProto.Response.Builder builderForValue) {
+          com.rocket.todolist.protobuf.Common.Response.Builder builderForValue) {
         if (responseBuilder_ == null) {
           response_ = builderForValue.build();
           onChanged();
@@ -3679,11 +2876,11 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder mergeResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder mergeResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (response_ != null) {
             response_ =
-              com.rocket.todolist.protobuf.TaskProto.Response.newBuilder(response_).mergeFrom(value).buildPartial();
+              com.rocket.todolist.protobuf.Common.Response.newBuilder(response_).mergeFrom(value).buildPartial();
           } else {
             response_ = value;
           }
@@ -3711,7 +2908,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response.Builder getResponseBuilder() {
+      public com.rocket.todolist.protobuf.Common.Response.Builder getResponseBuilder() {
         
         onChanged();
         return getResponseFieldBuilder().getBuilder();
@@ -3719,23 +2916,23 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+      public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
         if (responseBuilder_ != null) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
           return response_ == null ?
-              com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+              com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         }
       }
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> 
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> 
           getResponseFieldBuilder() {
         if (responseBuilder_ == null) {
           responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder>(
+              com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder>(
                   getResponse(),
                   getParentForChildren(),
                   isClean());
@@ -4299,11 +3496,11 @@ public final class TaskProto {
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return The response.
      */
-    com.rocket.todolist.protobuf.TaskProto.Response getResponse();
+    com.rocket.todolist.protobuf.Common.Response getResponse();
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
-    com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder();
+    com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder();
   }
   /**
    * Protobuf type {@code com.rocket.todolist.protobuf.DeleteTaskResponse}
@@ -4351,11 +3548,11 @@ public final class TaskProto {
               done = true;
               break;
             case 10: {
-              com.rocket.todolist.protobuf.TaskProto.Response.Builder subBuilder = null;
+              com.rocket.todolist.protobuf.Common.Response.Builder subBuilder = null;
               if (response_ != null) {
                 subBuilder = response_.toBuilder();
               }
-              response_ = input.readMessage(com.rocket.todolist.protobuf.TaskProto.Response.parser(), extensionRegistry);
+              response_ = input.readMessage(com.rocket.todolist.protobuf.Common.Response.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(response_);
                 response_ = subBuilder.buildPartial();
@@ -4398,7 +3595,7 @@ public final class TaskProto {
     }
 
     public static final int RESPONSE_FIELD_NUMBER = 1;
-    private com.rocket.todolist.protobuf.TaskProto.Response response_;
+    private com.rocket.todolist.protobuf.Common.Response response_;
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return Whether the response field is set.
@@ -4412,14 +3609,14 @@ public final class TaskProto {
      * @return The response.
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
-      return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+    public com.rocket.todolist.protobuf.Common.Response getResponse() {
+      return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+    public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
     }
 
@@ -4738,9 +3935,9 @@ public final class TaskProto {
         return this;
       }
 
-      private com.rocket.todolist.protobuf.TaskProto.Response response_;
+      private com.rocket.todolist.protobuf.Common.Response response_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> responseBuilder_;
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return Whether the response field is set.
@@ -4752,9 +3949,9 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return The response.
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
+      public com.rocket.todolist.protobuf.Common.Response getResponse() {
         if (responseBuilder_ == null) {
-          return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+          return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         } else {
           return responseBuilder_.getMessage();
         }
@@ -4762,7 +3959,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder setResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder setResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4779,7 +3976,7 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       public Builder setResponse(
-          com.rocket.todolist.protobuf.TaskProto.Response.Builder builderForValue) {
+          com.rocket.todolist.protobuf.Common.Response.Builder builderForValue) {
         if (responseBuilder_ == null) {
           response_ = builderForValue.build();
           onChanged();
@@ -4792,11 +3989,11 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder mergeResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder mergeResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (response_ != null) {
             response_ =
-              com.rocket.todolist.protobuf.TaskProto.Response.newBuilder(response_).mergeFrom(value).buildPartial();
+              com.rocket.todolist.protobuf.Common.Response.newBuilder(response_).mergeFrom(value).buildPartial();
           } else {
             response_ = value;
           }
@@ -4824,7 +4021,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response.Builder getResponseBuilder() {
+      public com.rocket.todolist.protobuf.Common.Response.Builder getResponseBuilder() {
         
         onChanged();
         return getResponseFieldBuilder().getBuilder();
@@ -4832,23 +4029,23 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+      public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
         if (responseBuilder_ != null) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
           return response_ == null ?
-              com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+              com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         }
       }
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> 
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> 
           getResponseFieldBuilder() {
         if (responseBuilder_ == null) {
           responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder>(
+              com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder>(
                   getResponse(),
                   getParentForChildren(),
                   isClean());
@@ -5545,11 +4742,11 @@ public final class TaskProto {
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return The response.
      */
-    com.rocket.todolist.protobuf.TaskProto.Response getResponse();
+    com.rocket.todolist.protobuf.Common.Response getResponse();
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
-    com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder();
+    com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder();
   }
   /**
    * Protobuf type {@code com.rocket.todolist.protobuf.UpdateTaskResponse}
@@ -5597,11 +4794,11 @@ public final class TaskProto {
               done = true;
               break;
             case 10: {
-              com.rocket.todolist.protobuf.TaskProto.Response.Builder subBuilder = null;
+              com.rocket.todolist.protobuf.Common.Response.Builder subBuilder = null;
               if (response_ != null) {
                 subBuilder = response_.toBuilder();
               }
-              response_ = input.readMessage(com.rocket.todolist.protobuf.TaskProto.Response.parser(), extensionRegistry);
+              response_ = input.readMessage(com.rocket.todolist.protobuf.Common.Response.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(response_);
                 response_ = subBuilder.buildPartial();
@@ -5644,7 +4841,7 @@ public final class TaskProto {
     }
 
     public static final int RESPONSE_FIELD_NUMBER = 1;
-    private com.rocket.todolist.protobuf.TaskProto.Response response_;
+    private com.rocket.todolist.protobuf.Common.Response response_;
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return Whether the response field is set.
@@ -5658,14 +4855,14 @@ public final class TaskProto {
      * @return The response.
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
-      return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+    public com.rocket.todolist.protobuf.Common.Response getResponse() {
+      return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+    public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
     }
 
@@ -5984,9 +5181,9 @@ public final class TaskProto {
         return this;
       }
 
-      private com.rocket.todolist.protobuf.TaskProto.Response response_;
+      private com.rocket.todolist.protobuf.Common.Response response_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> responseBuilder_;
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return Whether the response field is set.
@@ -5998,9 +5195,9 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return The response.
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
+      public com.rocket.todolist.protobuf.Common.Response getResponse() {
         if (responseBuilder_ == null) {
-          return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+          return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         } else {
           return responseBuilder_.getMessage();
         }
@@ -6008,7 +5205,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder setResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder setResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6025,7 +5222,7 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       public Builder setResponse(
-          com.rocket.todolist.protobuf.TaskProto.Response.Builder builderForValue) {
+          com.rocket.todolist.protobuf.Common.Response.Builder builderForValue) {
         if (responseBuilder_ == null) {
           response_ = builderForValue.build();
           onChanged();
@@ -6038,11 +5235,11 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder mergeResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder mergeResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (response_ != null) {
             response_ =
-              com.rocket.todolist.protobuf.TaskProto.Response.newBuilder(response_).mergeFrom(value).buildPartial();
+              com.rocket.todolist.protobuf.Common.Response.newBuilder(response_).mergeFrom(value).buildPartial();
           } else {
             response_ = value;
           }
@@ -6070,7 +5267,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response.Builder getResponseBuilder() {
+      public com.rocket.todolist.protobuf.Common.Response.Builder getResponseBuilder() {
         
         onChanged();
         return getResponseFieldBuilder().getBuilder();
@@ -6078,23 +5275,23 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+      public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
         if (responseBuilder_ != null) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
           return response_ == null ?
-              com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+              com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         }
       }
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> 
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> 
           getResponseFieldBuilder() {
         if (responseBuilder_ == null) {
           responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder>(
+              com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder>(
                   getResponse(),
                   getParentForChildren(),
                   isClean());
@@ -7020,11 +6217,11 @@ public final class TaskProto {
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return The response.
      */
-    com.rocket.todolist.protobuf.TaskProto.Response getResponse();
+    com.rocket.todolist.protobuf.Common.Response getResponse();
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
-    com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder();
+    com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder();
 
     /**
      * <code>repeated .com.rocket.todolist.protobuf.Task tasks = 2;</code>
@@ -7098,11 +6295,11 @@ public final class TaskProto {
               done = true;
               break;
             case 10: {
-              com.rocket.todolist.protobuf.TaskProto.Response.Builder subBuilder = null;
+              com.rocket.todolist.protobuf.Common.Response.Builder subBuilder = null;
               if (response_ != null) {
                 subBuilder = response_.toBuilder();
               }
-              response_ = input.readMessage(com.rocket.todolist.protobuf.TaskProto.Response.parser(), extensionRegistry);
+              response_ = input.readMessage(com.rocket.todolist.protobuf.Common.Response.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(response_);
                 response_ = subBuilder.buildPartial();
@@ -7157,7 +6354,7 @@ public final class TaskProto {
     }
 
     public static final int RESPONSE_FIELD_NUMBER = 1;
-    private com.rocket.todolist.protobuf.TaskProto.Response response_;
+    private com.rocket.todolist.protobuf.Common.Response response_;
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      * @return Whether the response field is set.
@@ -7171,14 +6368,14 @@ public final class TaskProto {
      * @return The response.
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
-      return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+    public com.rocket.todolist.protobuf.Common.Response getResponse() {
+      return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
      */
     @java.lang.Override
-    public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+    public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
     }
 
@@ -7594,9 +6791,9 @@ public final class TaskProto {
       }
       private int bitField0_;
 
-      private com.rocket.todolist.protobuf.TaskProto.Response response_;
+      private com.rocket.todolist.protobuf.Common.Response response_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> responseBuilder_;
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return Whether the response field is set.
@@ -7608,9 +6805,9 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        * @return The response.
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response getResponse() {
+      public com.rocket.todolist.protobuf.Common.Response getResponse() {
         if (responseBuilder_ == null) {
-          return response_ == null ? com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+          return response_ == null ? com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         } else {
           return responseBuilder_.getMessage();
         }
@@ -7618,7 +6815,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder setResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder setResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7635,7 +6832,7 @@ public final class TaskProto {
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       public Builder setResponse(
-          com.rocket.todolist.protobuf.TaskProto.Response.Builder builderForValue) {
+          com.rocket.todolist.protobuf.Common.Response.Builder builderForValue) {
         if (responseBuilder_ == null) {
           response_ = builderForValue.build();
           onChanged();
@@ -7648,11 +6845,11 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public Builder mergeResponse(com.rocket.todolist.protobuf.TaskProto.Response value) {
+      public Builder mergeResponse(com.rocket.todolist.protobuf.Common.Response value) {
         if (responseBuilder_ == null) {
           if (response_ != null) {
             response_ =
-              com.rocket.todolist.protobuf.TaskProto.Response.newBuilder(response_).mergeFrom(value).buildPartial();
+              com.rocket.todolist.protobuf.Common.Response.newBuilder(response_).mergeFrom(value).buildPartial();
           } else {
             response_ = value;
           }
@@ -7680,7 +6877,7 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.Response.Builder getResponseBuilder() {
+      public com.rocket.todolist.protobuf.Common.Response.Builder getResponseBuilder() {
         
         onChanged();
         return getResponseFieldBuilder().getBuilder();
@@ -7688,23 +6885,23 @@ public final class TaskProto {
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
-      public com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder getResponseOrBuilder() {
+      public com.rocket.todolist.protobuf.Common.ResponseOrBuilder getResponseOrBuilder() {
         if (responseBuilder_ != null) {
           return responseBuilder_.getMessageOrBuilder();
         } else {
           return response_ == null ?
-              com.rocket.todolist.protobuf.TaskProto.Response.getDefaultInstance() : response_;
+              com.rocket.todolist.protobuf.Common.Response.getDefaultInstance() : response_;
         }
       }
       /**
        * <code>.com.rocket.todolist.protobuf.Response response = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder> 
+          com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder> 
           getResponseFieldBuilder() {
         if (responseBuilder_ == null) {
           responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.rocket.todolist.protobuf.TaskProto.Response, com.rocket.todolist.protobuf.TaskProto.Response.Builder, com.rocket.todolist.protobuf.TaskProto.ResponseOrBuilder>(
+              com.rocket.todolist.protobuf.Common.Response, com.rocket.todolist.protobuf.Common.Response.Builder, com.rocket.todolist.protobuf.Common.ResponseOrBuilder>(
                   getResponse(),
                   getParentForChildren(),
                   isClean());
@@ -8011,11 +7208,6 @@ public final class TaskProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_rocket_todolist_protobuf_Task_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_rocket_todolist_protobuf_Response_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_rocket_todolist_protobuf_Response_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_rocket_todolist_protobuf_AddTaskRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -8065,37 +7257,34 @@ public final class TaskProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\017TaskProto.proto\022\034com.rocket.todolist.p" +
-      "rotobuf\"\341\001\n\004Task\022\n\n\002id\030\001 \001(\005\022\016\n\006userId\030\002" +
-      " \001(\005\022\r\n\005title\030\003 \001(\t\022\021\n\tstartTime\030\004 \001(\003\022\017" +
-      "\n\007endTime\030\005 \001(\003\022\r\n\005color\030\006 \001(\t\022\020\n\010catego" +
-      "ry\030\007 \001(\t\022\017\n\007content\030\010 \001(\t\022\r\n\005state\030\t \001(\005" +
-      "\022\016\n\006repeat\030\n \001(\005\022\024\n\014remindMethod\030\013 \001(\005\022\022" +
-      "\n\nremindTime\030\014 \001(\003\022\017\n\007address\030\r \001(\t\"U\n\010R" +
-      "esponse\0228\n\004code\030\001 \001(\0162*.com.rocket.todol" +
-      "ist.protobuf.ResponseCode\022\017\n\007message\030\002 \001" +
-      "(\t\"B\n\016AddTaskRequest\0220\n\004task\030\001 \001(\0132\".com" +
-      ".rocket.todolist.protobuf.Task\"K\n\017AddTas" +
+      "rotobuf\032\014Common.proto\"\341\001\n\004Task\022\n\n\002id\030\001 \001" +
+      "(\005\022\016\n\006userId\030\002 \001(\005\022\r\n\005title\030\003 \001(\t\022\021\n\tsta" +
+      "rtTime\030\004 \001(\003\022\017\n\007endTime\030\005 \001(\003\022\r\n\005color\030\006" +
+      " \001(\t\022\020\n\010category\030\007 \001(\t\022\017\n\007content\030\010 \001(\t\022" +
+      "\r\n\005state\030\t \001(\005\022\016\n\006repeat\030\n \001(\005\022\024\n\014remind" +
+      "Method\030\013 \001(\005\022\022\n\nremindTime\030\014 \001(\003\022\017\n\007addr" +
+      "ess\030\r \001(\t\"B\n\016AddTaskRequest\0220\n\004task\030\001 \001(" +
+      "\0132\".com.rocket.todolist.protobuf.Task\"K\n" +
+      "\017AddTaskResponse\0228\n\010response\030\001 \001(\0132&.com" +
+      ".rocket.todolist.protobuf.Response\"\037\n\021De" +
+      "leteTaskRequest\022\n\n\002id\030\001 \001(\005\"N\n\022DeleteTas" +
       "kResponse\0228\n\010response\030\001 \001(\0132&.com.rocket" +
-      ".todolist.protobuf.Response\"\037\n\021DeleteTas" +
-      "kRequest\022\n\n\002id\030\001 \001(\005\"N\n\022DeleteTaskRespon" +
-      "se\0228\n\010response\030\001 \001(\0132&.com.rocket.todoli" +
-      "st.protobuf.Response\"E\n\021UpdateTaskReques" +
-      "t\0220\n\004task\030\001 \001(\0132\".com.rocket.todolist.pr" +
-      "otobuf.Task\"N\n\022UpdateTaskResponse\0228\n\010res" +
-      "ponse\030\001 \001(\0132&.com.rocket.todolist.protob" +
-      "uf.Response\"f\n\017GetTasksRequest\022\016\n\006userId" +
-      "\030\001 \001(\005\022\021\n\tstartTime\030\002 \001(\003\022\017\n\007endTime\030\003 \001" +
-      "(\003\022\020\n\010category\030\004 \001(\t\022\r\n\005state\030\005 \001(\005\"\177\n\020G" +
-      "etTasksResponse\0228\n\010response\030\001 \001(\0132&.com." +
-      "rocket.todolist.protobuf.Response\0221\n\005tas" +
-      "ks\030\002 \003(\0132\".com.rocket.todolist.protobuf." +
-      "Task*Z\n\014ResponseCode\022\013\n\007Success\020\000\022\024\n\017Del" +
-      "eteTaskError\020\264\020\022\024\n\017UpdateTaskError\020\230\021\022\021\n" +
-      "\014AddTaskError\020\374\021b\006proto3"
+      ".todolist.protobuf.Response\"E\n\021UpdateTas" +
+      "kRequest\0220\n\004task\030\001 \001(\0132\".com.rocket.todo" +
+      "list.protobuf.Task\"N\n\022UpdateTaskResponse" +
+      "\0228\n\010response\030\001 \001(\0132&.com.rocket.todolist" +
+      ".protobuf.Response\"f\n\017GetTasksRequest\022\016\n" +
+      "\006userId\030\001 \001(\005\022\021\n\tstartTime\030\002 \001(\003\022\017\n\007endT" +
+      "ime\030\003 \001(\003\022\020\n\010category\030\004 \001(\t\022\r\n\005state\030\005 \001" +
+      "(\005\"\177\n\020GetTasksResponse\0228\n\010response\030\001 \001(\013" +
+      "2&.com.rocket.todolist.protobuf.Response" +
+      "\0221\n\005tasks\030\002 \003(\0132\".com.rocket.todolist.pr" +
+      "otobuf.Taskb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.rocket.todolist.protobuf.Common.getDescriptor(),
         });
     internal_static_com_rocket_todolist_protobuf_Task_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -8103,60 +7292,55 @@ public final class TaskProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_Task_descriptor,
         new java.lang.String[] { "Id", "UserId", "Title", "StartTime", "EndTime", "Color", "Category", "Content", "State", "Repeat", "RemindMethod", "RemindTime", "Address", });
-    internal_static_com_rocket_todolist_protobuf_Response_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_com_rocket_todolist_protobuf_Response_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_rocket_todolist_protobuf_Response_descriptor,
-        new java.lang.String[] { "Code", "Message", });
     internal_static_com_rocket_todolist_protobuf_AddTaskRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_com_rocket_todolist_protobuf_AddTaskRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_AddTaskRequest_descriptor,
         new java.lang.String[] { "Task", });
     internal_static_com_rocket_todolist_protobuf_AddTaskResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_com_rocket_todolist_protobuf_AddTaskResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_AddTaskResponse_descriptor,
         new java.lang.String[] { "Response", });
     internal_static_com_rocket_todolist_protobuf_DeleteTaskRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_com_rocket_todolist_protobuf_DeleteTaskRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_DeleteTaskRequest_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_com_rocket_todolist_protobuf_DeleteTaskResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_com_rocket_todolist_protobuf_DeleteTaskResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_DeleteTaskResponse_descriptor,
         new java.lang.String[] { "Response", });
     internal_static_com_rocket_todolist_protobuf_UpdateTaskRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_com_rocket_todolist_protobuf_UpdateTaskRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_UpdateTaskRequest_descriptor,
         new java.lang.String[] { "Task", });
     internal_static_com_rocket_todolist_protobuf_UpdateTaskResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_com_rocket_todolist_protobuf_UpdateTaskResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_UpdateTaskResponse_descriptor,
         new java.lang.String[] { "Response", });
     internal_static_com_rocket_todolist_protobuf_GetTasksRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_com_rocket_todolist_protobuf_GetTasksRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_GetTasksRequest_descriptor,
         new java.lang.String[] { "UserId", "StartTime", "EndTime", "Category", "State", });
     internal_static_com_rocket_todolist_protobuf_GetTasksResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_com_rocket_todolist_protobuf_GetTasksResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_rocket_todolist_protobuf_GetTasksResponse_descriptor,
         new java.lang.String[] { "Response", "Tasks", });
+    com.rocket.todolist.protobuf.Common.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

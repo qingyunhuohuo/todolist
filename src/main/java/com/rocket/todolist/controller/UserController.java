@@ -1,53 +1,97 @@
 package com.rocket.todolist.controller;
 
 import com.rocket.todolist.beam.User;
-import com.rocket.todolist.dao.UserMapper;
+import com.rocket.todolist.protobuf.Common;
+import com.rocket.todolist.protobuf.UserProto;
+import com.rocket.todolist.protobuf.UserProto.*;
 import com.rocket.todolist.util.Utils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.web.bind.annotation.*;
-import protobuf.UserProto.*;
 
 @RestController
 public class UserController {
     @RequestMapping(value="/login", method = RequestMethod.POST, produces = "application/x-protobuf")
     @CrossOrigin
-    public @ResponseBody LoginResponse userLogin(@RequestBody LoginRequest request) {
-        String info = request.getInfo();
+    public @ResponseBody UserLoginResponse userLogin(@RequestBody UserLoginRequest request) {
         SqlSession sqlSession = Utils.getSqlSession();
-		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = null;
-        if (request.getType() == 1) {
-            user = mapper.getUserByEmail(info);
+        switch (request.getType()) {
+            case Email :
+                user = sqlSession.selectOne("userLoginByEmail", convertUserToJava(request.getUser()));
+                break;
+            default:
+                break;
         }
-		sqlSession.close();
-        LoginResponse.Builder builder = LoginResponse.newBuilder();
+        sqlSession.close();
+        UserLoginResponse.Builder builder = UserLoginResponse.newBuilder();
         if (user == null) {
-            builder.setCode(1001);
-            builder.setMessage("user not find");
-        } else if (!user.getPwd().equals(request.getPassword())) {
-            builder.setCode(1002);
-            builder.setMessage("password error");
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.UserLoginError, "login error"));
         } else {
-            builder.setId(user.getId());
-            builder.setUserName(user.getName());
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.Success, "login error"));
+            builder.setUser(convertUserToProto(user));
         }
+
         return builder.build();
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST, produces = "application/x-protobuf")
     @CrossOrigin
-    public @ResponseBody DeleteUserResponse userDelete(@RequestBody DeleteUserRequest request) {
-        int id = request.getId();
+    public @ResponseBody DeleteUserResponse deleteUser(@RequestBody DeleteUserRequest request) {
         SqlSession sqlSession = Utils.getSqlSession();
-        int res = sqlSession.delete("deleteUserById", id);
+        int res = sqlSession.delete("deleteUserById", request.getId());
         sqlSession.commit();
         sqlSession.close();
         DeleteUserResponse.Builder builder = DeleteUserResponse.newBuilder();
         if (res == 1) {
-            builder.setCode(0);
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.Success, "delete user succeed"));
         } else {
-            builder.setCode(2);
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.DeleteTUserError, "user task error"));
         }
+        return builder.build();
+    }
+
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST, produces = "application/x-protobuf")
+    @CrossOrigin
+    public @ResponseBody AddUserResponse addUser(@RequestBody AddUserRequest request) {
+        SqlSession sqlSession = Utils.getSqlSession();
+        int res = sqlSession.insert("insertUser", convertUserToJava(request.getUser()));
+        sqlSession.commit();
+        sqlSession.close();
+        AddUserResponse.Builder builder = AddUserResponse.newBuilder();
+        if (res == 1) {
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.Success, "add user succeed"));
+        } else {
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.AddUserError, "add task error"));
+        }
+        return builder.build();
+    }
+
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST, produces = "application/x-protobuf")
+    @CrossOrigin
+    public @ResponseBody UpdateUserResponse updateUser(@RequestBody UpdateUserRequest request) {
+        SqlSession sqlSession = Utils.getSqlSession();
+        int res = sqlSession.update("updateUser", convertUserToJava(request.getUser()));
+        sqlSession.commit();
+        sqlSession.close();
+        UpdateUserResponse.Builder builder = UpdateUserResponse.newBuilder();
+        if (res == 1) {
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.Success, "update user succeed"));
+        } else {
+            builder.setResponse(Utils.getResponse(Common.ResponseCode.UpdateUserError, "update task error"));
+        }
+        return builder.build();
+    }
+
+    private static User convertUserToJava(UserProto.User user) {
+        return new User(user.getId(), user.getName(), user.getPwd(), user.getEmail());
+    }
+
+    private static UserProto.User convertUserToProto(User user) {
+        UserProto.User.Builder builder = UserProto.User.newBuilder();
+        builder.setId(user.getId());
+        builder.setName(user.getName());
+        builder.setPwd(user.getPwd());
+        builder.setEmail(user.getEmail());
         return builder.build();
     }
 }

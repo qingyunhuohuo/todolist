@@ -1,6 +1,7 @@
 package com.rocket.todolist.controller;
 
 import com.rocket.todolist.beam.Task;
+import com.rocket.todolist.protobuf.Common.*;
 import com.rocket.todolist.protobuf.TaskProto;
 import com.rocket.todolist.protobuf.TaskProto.*;
 import com.rocket.todolist.util.Utils;
@@ -22,9 +23,9 @@ public class TaskController {
         sqlSession.close();
         AddTaskResponse.Builder builder = AddTaskResponse.newBuilder();
         if (res == 1) {
-            builder.setResponse(getResponse(ResponseCode.Success, "add task succeed"));
+            builder.setResponse(Utils.getResponse(ResponseCode.Success, "add task succeed"));
         } else {
-            builder.setResponse(getResponse(ResponseCode.AddTaskError, "add task error"));
+            builder.setResponse(Utils.getResponse(ResponseCode.AddTaskError, "add task error"));
         }
         return builder.build();
     }
@@ -38,9 +39,9 @@ public class TaskController {
         sqlSession.close();
         DeleteTaskResponse.Builder builder = DeleteTaskResponse.newBuilder();
         if (res == 1) {
-            builder.setResponse(getResponse(ResponseCode.Success, "delete task succeed"));
+            builder.setResponse(Utils.getResponse(ResponseCode.Success, "delete task succeed"));
         } else {
-            builder.setResponse(getResponse(ResponseCode.DeleteTaskError, "delete task error"));
+            builder.setResponse(Utils.getResponse(ResponseCode.DeleteTaskError, "delete task error"));
         }
         return builder.build();
     }
@@ -54,9 +55,9 @@ public class TaskController {
         sqlSession.close();
         UpdateTaskResponse.Builder builder = UpdateTaskResponse.newBuilder();
         if (res == 1) {
-            builder.setResponse(getResponse(ResponseCode.Success, "update task succeed"));
+            builder.setResponse(Utils.getResponse(ResponseCode.Success, "update task succeed"));
         } else {
-            builder.setResponse(getResponse(ResponseCode.UpdateTaskError, "update task error"));
+            builder.setResponse(Utils.getResponse(ResponseCode.UpdateTaskError, "update task error"));
         }
         return builder.build();
     }
@@ -69,7 +70,7 @@ public class TaskController {
                 new Date(request.getStartTime()), new Date(request.getEndTime()), request.getCategory(), request.getState()));
         sqlSession.close();
         GetTasksResponse.Builder builder = GetTasksResponse.newBuilder();
-        builder.setResponse(getResponse(ResponseCode.Success, "get tasks succeed"));
+        builder.setResponse(Utils.getResponse(ResponseCode.Success, "get tasks succeed"));
         for (int i = 0; i < tasks.size(); i++) {
             builder.setTasks(i, convertTaskToProto(tasks.get(i)));
         }
@@ -99,13 +100,6 @@ public class TaskController {
         builder.setRemindMethod(task.getRemindMethod());
         builder.setRemindTime(task.getRemindTime().getTime());
         builder.setAddress(task.getAddress());
-        return builder.build();
-    }
-
-    private static Response getResponse(ResponseCode code, String message) {
-        Response.Builder builder = Response.newBuilder();
-        builder.setCode(code);
-        builder.setMessage(message);
         return builder.build();
     }
 }

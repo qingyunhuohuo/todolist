@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "Common.proto";
 package com.rocket.todolist.protobuf;
 
 message Task {
@@ -15,18 +16,6 @@ message Task {
     int32 remindMethod = 11;
     int64 remindTime = 12;
     string address = 13;
-}
-
-enum ResponseCode {
-    Success = 0;
-    DeleteTaskError = 2100;
-    UpdateTaskError = 2200;
-    AddTaskError = 2300;
-}
-
-message Response {
-    ResponseCode code = 1;
-    string message = 2;
 }
 
 message AddTaskRequest {

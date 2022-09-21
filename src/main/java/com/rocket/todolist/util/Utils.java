@@ -1,5 +1,6 @@
 package com.rocket.todolist.util;
 
+import com.rocket.todolist.protobuf.Common;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -25,5 +26,12 @@ public class Utils {
 
     public static SqlSession getSqlSession() {
         return sSqlSessionFactory.openSession();
+    }
+
+    public static Common.Response getResponse(Common.ResponseCode code, String message) {
+        Common.Response.Builder builder = Common.Response.newBuilder();
+        builder.setCode(code);
+        builder.setMessage(message);
+        return builder.build();
     }
 }

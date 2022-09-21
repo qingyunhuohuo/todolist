@@ -1,0 +1,20 @@
+syntax = "proto3";
+package com.rocket.todolist.protobuf;
+
+enum ResponseCode {
+  Success = 0;
+
+  DeleteTaskError = 2100;
+  AddTaskError = 2300;
+  UpdateTaskError = 2200;
+
+  DeleteTUserError = 3100;
+  AddUserError = 3200;
+  UpdateUserError = 3300;
+  UserLoginError = 3400;
+}
+
+message Response {
+  ResponseCode code = 1;
+  string message = 2;
+}
