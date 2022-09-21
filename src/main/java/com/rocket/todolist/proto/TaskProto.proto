@@ -1,5 +1,5 @@
 syntax = "proto3";
-package protobuf;
+package com.rocket.todolist.protobuf;
 
 message Task {
     int32 id = 1;
@@ -19,7 +19,9 @@ message Task {
 
 enum ResponseCode {
     Success = 0;
-    Error = 2001;
+    DeleteTaskError = 2100;
+    UpdateTaskError = 2200;
+    AddTaskError = 2300;
 }
 
 message Response {
@@ -51,14 +53,15 @@ message UpdateTaskResponse {
     Response response = 1;
 }
 
-message GetTaskRequest {
-    int64 startTime = 1;
-    int64 endTime = 2;
-    string category = 7;
-    int32 state = 9;
+message GetTasksRequest {
+    int32 userId = 1;
+    int64 startTime = 2;
+    int64 endTime = 3;
+    string category = 4;
+    int32 state = 5;
 }
 
-message GetTaskResponse {
+message GetTasksResponse {
     Response response = 1;
     repeated Task tasks = 2;
 }

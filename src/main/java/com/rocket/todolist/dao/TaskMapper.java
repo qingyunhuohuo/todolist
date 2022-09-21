@@ -10,7 +10,9 @@ public interface TaskMapper {
 
     List<Task> selectTasksByUser(User user);
 
+    List<Task> getTasks(Task task);
+
     void deleteTaskById(int id);
 
-    void updateTaskById(Task task);
+    void updateTask(Task task);
 }

@@ -17,6 +17,14 @@ public class Task {
     private Date remindTime;
     private String address;
 
+    public Task(int userId, Date startTime, Date endTime, String category, int state) {
+        this.userId = userId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.category = category;
+        this.state = state;
+    }
+
     public Task(int id, int userId, String title, Date startTime,
                 Date endTime, String color, String category, String content,
                 int state, int repeat, int remindMethod, Date remindTime, String address) {

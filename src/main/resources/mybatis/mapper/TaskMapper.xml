@@ -26,57 +26,70 @@
 <!--        </trim>-->
 <!--    </insert>-->
     <insert id="insertTask" parameterType="task">
-        insert into task (user_id, title, start_time, end_time, color, category,
-                    content, state, repeat, remind_method, remind_time, address)
+        insert into todolist.task (`userId`, `title`, `startTime`, `endTime`, `color`, `category`,
+                    `content`, `state`, `repeat`, `remindMethod`, `remindTime`, `address`)
         values (#{userId}, #{title}, #{startTime}, #{endTime}, #{color}, #{category},
                     #{content}, #{state}, #{repeat}, #{remindMethod}, #{remindTime}, #{address})
     </insert>
 
     <select id="selectTasksByUser" parameterType="user" resultType="task">
-        select * from todolist.task where user_id = #{id}
+        select * from todolist.task where userId = #{id}
+    </select>
+
+    <select id="getTasks" parameterType="task" resultType="task">
+        select * from todolist.task
+        where userId = #{userId} and endTime &lt;= #{endTime} and startTime &gt;= #{startTime}
+            and `category` = #{category} and `state` = #{state}
     </select>
 
     <delete id="deleteTaskById">
         delete from todolist.task where id = #{id}
     </delete>
 
-    <update id="updateTaskById" parameterType="task">
-        update todolist.task
-        <set>
-            <if test="title != null">
-                title = #{title},
-            </if>
-            <if test="startTime != null">
-                start_time = #{startTime},
-            </if>
-            <if test="endTime != null">
-                end_time = #{endTime},
-            </if>
-            <if test="color != null">
-                color = #{color},
-            </if>
-            <if test="category != null">
-                category = #{category},
-            </if>
-            <if test="content != null">
-                content = #{content},
-            </if>
-            <if test="state != null">
-                state = #{state}
-            </if>
-            <if test="repeat != null">
-                repeat = #{repeat}
-            </if>
-            <if test="remindMethod != null">
-                remind_method = #{remindMethod}
-            </if>
-            <if test="remindTime != null">
-                remind_time = #{remindTime}
-            </if>
-            <if test="address != null">
-                address = #{address}
-            </if>
-        </set>
-        where id = #{id}
+    <update id="updateTask" parameterType="task">
+        update todolist.task set `title` = #{title}, `startTime` = #{startTime}, `endTime` = #{endTime},
+            `color` = #{color}, `category` = #{category}, `content` = #{content}, `state` = #{state}, `repeat` = #{repeat},
+            `remindMethod` = #{remindMethod}, `remindTime` = #{remindTime}, `address` = #{address}
+        where `id` = #{id}
     </update>
+
+<!--    <update id="updateTask" parameterType="task">-->
+<!--        update todolist.task-->
+<!--        <set>-->
+<!--            <if test="title != null">-->
+<!--                title = #{title},-->
+<!--            </if>-->
+<!--            <if test="startTime != null">-->
+<!--                startTime = #{startTime},-->
+<!--            </if>-->
+<!--            <if test="endTime != null">-->
+<!--                endTime = #{endTime},-->
+<!--            </if>-->
+<!--            <if test="color != null">-->
+<!--                color = #{color},-->
+<!--            </if>-->
+<!--            <if test="category != null">-->
+<!--                category = #{category},-->
+<!--            </if>-->
+<!--            <if test="content != null">-->
+<!--                content = #{content},-->
+<!--            </if>-->
+<!--            <if test="state != null">-->
+<!--                state = #{state},-->
+<!--            </if>-->
+<!--            <if test="repeat != null">-->
+<!--                repeat = #{repeat},-->
+<!--            </if>-->
+<!--            <if test="remindMethod != null">-->
+<!--                remindMethod = #{remindMethod},-->
+<!--            </if>-->
+<!--            <if test="remindTime != null">-->
+<!--                remindTime = #{remindTime},-->
+<!--            </if>-->
+<!--            <if test="address != null">-->
+<!--                address = #{address}-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        where id = #{id}-->
+<!--    </update>-->
 </mapper>
