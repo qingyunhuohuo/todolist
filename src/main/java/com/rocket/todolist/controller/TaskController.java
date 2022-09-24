@@ -72,7 +72,7 @@ public class TaskController {
         GetTasksResponse.Builder builder = GetTasksResponse.newBuilder();
         builder.setResponse(Utils.getResponse(ResponseCode.Success, "get tasks succeed"));
         for (int i = 0; i < tasks.size(); i++) {
-            builder.setTasks(i, convertTaskToProto(tasks.get(i)));
+            builder.addTasks(i, convertTaskToProto(tasks.get(i)));
         }
         return builder.build();
     }
