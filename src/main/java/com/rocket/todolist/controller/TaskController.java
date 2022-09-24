@@ -8,7 +8,7 @@ import com.rocket.todolist.util.Utils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @RestController
