@@ -46,4 +46,5 @@ message UserLoginRequest {
 message UserLoginResponse {
     Response response = 1;
     User user = 2;
+    string token = 3;
 }

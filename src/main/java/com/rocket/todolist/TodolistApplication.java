@@ -1,13 +1,29 @@
 package com.rocket.todolist;
 
+import com.rocket.todolist.security.security.JwtAuthenticationTokenFilter;
+import com.rocket.todolist.util.SpringContextHolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class TodolistApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodolistApplication.class, args);
+	}
+
+	@Bean
+	public SpringContextHolder springContextHolder() {
+		return new SpringContextHolder();
+	}
+
+	@Bean
+	public FilterRegistrationBean registration(JwtAuthenticationTokenFilter filter) {
+		FilterRegistrationBean registration = new FilterRegistrationBean(filter);
+		registration.setEnabled(false);
+		return registration;
 	}
 
 //	@GetMapping("/hello1")
