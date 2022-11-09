@@ -4,11 +4,9 @@ import com.rocket.todolist.beam.User;
 import com.rocket.todolist.protobuf.Common;
 import com.rocket.todolist.protobuf.UserProto;
 import com.rocket.todolist.protobuf.UserProto.*;
-import com.rocket.todolist.security.config.JwtSecurityProperties;
 import com.rocket.todolist.security.util.JwtTokenUtils;
 import com.rocket.todolist.util.Utils;
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,9 +14,10 @@ import java.util.Map;
 
 @RestController
 public class UserController {
-    @Autowired
-    private JwtSecurityProperties jwtSecurityProperties;
-    private final JwtTokenUtils jwtTokenUtils = new JwtTokenUtils(jwtSecurityProperties);
+    private JwtTokenUtils jwtTokenUtils;
+    public UserController(JwtTokenUtils jwtTokenUtils) {
+        this.jwtTokenUtils = jwtTokenUtils;
+    }
     @RequestMapping(value="/login", method = RequestMethod.POST, produces = "application/x-protobuf")
     @CrossOrigin
     public @ResponseBody UserLoginResponse userLogin(@RequestBody UserLoginRequest request) {
